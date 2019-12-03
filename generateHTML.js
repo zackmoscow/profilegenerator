@@ -177,12 +177,12 @@ function generateHTML(colorTheme, userInfo, stars) {
     <body>
       
       <div class="row wrapper">
-        <div class="photo header">
+        <div class="photo header col">
           <img src="${userInfo.image}" alt="avatar">
           <h1>Hi! I'm ${userInfo.name}!</h1>
           <p class="links-nav">
-            <a href="https://www.google.com/maps/place/${userInfo.location}" class="nav-link"><i class="fas fa-map-marker"></i>${userInfo.location}</a>
-            <a href="${userInfo.profile}"class="nav-link"><i class="fab fa-github-square"></i>GitHub</a>
+            <a href="https://www.google.com/maps/place/${userInfo.location}" class="nav-link"><i class="fas fa-map-marker"></i> ${userInfo.location}</a>
+            <a href="${userInfo.profile}"class="nav-link"><i class="fab fa-github-square"></i> GitHub</a>
             <a href="${userInfo.blog}" class="nav-link"><i class="fas fa-rss-square"></i> Blog</a>
           </p>        
         </div>
@@ -191,28 +191,28 @@ function generateHTML(colorTheme, userInfo, stars) {
       <div class="container">
         
         <div class="row" id="#bio">
-            <h2>${userInfo.bio}</h2>
+            <h3 class="col">${userInfo.bio}</h3>
         </div>
 
         <div class="row">
-          <div class="card">
-            <h3>Public Repositories</h3>
-            <p>${userInfo.publicrepos}</p>
+          <div class="card col">
+            <h4>Public Repositories</h4>
+            <h5>${userInfo.publicrepos}</h5>
           </div>
-          <div class="card">
-            <h3>Followers</h3>
-            <p>${userInfo.followers}</p>
+          <div class="card col">
+            <h4>Followers</h4>
+            <h5>${userInfo.followers}</h5>
           </div>
         </div>
 
         <div class="row">
-          <div class="card">
-            <h3>GitHub Stars</h3>
-            <p>${stars}</p>
+          <div class="card col">
+            <h4>GitHub Stars</h4>
+            <h5>${stars}</h5>
           </div>
-          <div class="card">
-            <h3>Following</h3>
-            <p>${userInfo.following}</p>
+          <div class="card col">
+            <h4>Following</h4>
+            <h5>${userInfo.following}</h5>
           </div>
         </div>
 

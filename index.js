@@ -2,6 +2,10 @@ const inquirer = require("inquirer");
 const axios = require("axios");
 const fs = require("fs");
 const html = require("./generateHTML");
+const util = require("util");
+const pdf = require('html-pdf');
+const writeFileAsync = util.promisify(fs.writeFile);
+
 
 const questions = [
     {
@@ -17,16 +21,17 @@ const questions = [
     }
 ];
 
-// function writeToFile(fileName, data) {
- 
-// }
+function writeToFile(htmlFile){
+    const options = { format: 'Letter'};
+    pdf.create(htmlFile, options).toFile('index.pdf', function(err){
+    console.log("Success! index.pdf file written")
+    });
+  }
 
 async function init() {
     const answers = await inquirer.prompt([questions[0], questions[1]]);
     let username = answers.username;
     let colorTheme = answers.color;
-    // let userInfo = {};
-    // let stars;
     try {
         const response = await axios(`https://api.github.com/users/${username}`);
         let userInfo = {
@@ -42,10 +47,15 @@ async function init() {
         }
         let userStars = await axios(`https://api.github.com/users/${username}/starred`);
         let stars = userStars.data.length;
+        
         const createHTML = html.generateHTML(colorTheme, userInfo, stars);
-        console.log(colorTheme);
-        console.log(userInfo);
-        console.log(stars);
+        writeFileAsync("index.html", createHTML);
+
+        fs.readFile('index.html', 'utf8', (err, data) => {
+            writeToFile(data, "index.html");
+            console.log("Success! index.html file written")
+        })
+
     } catch (error) {
         throw error;
     }

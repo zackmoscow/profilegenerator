@@ -1,5 +1,4 @@
-function generateHTML(colorTheme, userInfo, stars) {
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
    <head>
       <meta charset="UTF-8" />
@@ -25,7 +24,7 @@ function generateHTML(colorTheme, userInfo, stars) {
          height: 100%;
          }
          .wrapper {
-         background-color: ${colors[colorTheme].wrapperBackground};
+         background-color: #5F64D3;
          padding-top: 100px;
          }
          body {
@@ -67,8 +66,8 @@ function generateHTML(colorTheme, userInfo, stars) {
          display: flex;
          justify-content: center;
          flex-wrap: wrap;
-         background-color: ${colors[colorTheme].headerBackground};
-         color: ${colors[colorTheme].headerColor};
+         background-color: #26175A;
+         color: white;
          padding: 10px;
          width: 95%;
          border-radius: 6px;
@@ -79,7 +78,7 @@ function generateHTML(colorTheme, userInfo, stars) {
          border-radius: 50%;
          object-fit: cover;
          margin-top: -75px;
-         border: 6px solid ${colors[colorTheme].photoBorderColor};
+         border: 6px solid #73448C;
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
          }
          .photo-header h1, .photo-header h2 {
@@ -122,8 +121,8 @@ function generateHTML(colorTheme, userInfo, stars) {
          .card {
            padding: 20px;
            border-radius: 6px;
-           background-color: ${colors[colorTheme].headerBackground};
-           color: ${colors[colorTheme].headerColor};
+           background-color: #26175A;
+           color: white;
            margin: 20px;
          }
          
@@ -148,13 +147,13 @@ function generateHTML(colorTheme, userInfo, stars) {
     <body>
       
       <div class="row wrapper">
-        <div class="photo header">
-          <img src="${userInfo.image}" alt="avatar">
-          <h1>Hi! I'm ${userInfo.name}!</h1>
+        <div class="photo header col">
+          <img src="https://avatars0.githubusercontent.com/u/56355506?v=4" alt="avatar">
+          <h1>Hi! I'm Zack Moscow!</h1>
           <p class="links-nav">
-            <a href="https://www.google.com/maps/place/${userInfo.location}" class="nav-link"><i class="fas fa-map-marker"></i>${userInfo.location}</a>
-            <a href="${userInfo.profile}"class="nav-link"><i class="fab fa-github-square"></i>GitHub</a>
-            <a href="${userInfo.blog}" class="nav-link"><i class="fas fa-rss-square"></i> Blog</a>
+            <a href="https://www.google.com/maps/place/Nashville, TN" class="nav-link"><i class="fas fa-map-marker"></i> Nashville, TN</a>
+            <a href="https://github.com/zackmoscow"class="nav-link"><i class="fab fa-github-square"></i> GitHub</a>
+            <a href="https://zackmoscow.github.io/" class="nav-link"><i class="fas fa-rss-square"></i> Blog</a>
           </p>        
         </div>
       </div>
@@ -162,32 +161,31 @@ function generateHTML(colorTheme, userInfo, stars) {
       <div class="container">
         
         <div class="row" id="#bio">
-            <h2>${userInfo.bio}</h2>
+            <h3 class="col">Web developer and sales expert with extensive leadership, management, and entrepreneurship experience.</h3>
         </div>
 
         <div class="row">
-          <div class="card">
-            <h3>Public Repositories</h3>
-            <p>${userInfo.publicrepos}</p>
+          <div class="card col">
+            <h4>Public Repositories</h4>
+            <h5>14</h5>
           </div>
-          <div class="card">
-            <h3>Followers</h3>
-            <p>${userInfo.followers}</p>
+          <div class="card col">
+            <h4>Followers</h4>
+            <h5>2</h5>
           </div>
         </div>
 
         <div class="row">
-          <div class="card">
-            <h3>GitHub Stars</h3>
-            <p>${stars}</p>
+          <div class="card col">
+            <h4>GitHub Stars</h4>
+            <h5>4</h5>
           </div>
-          <div class="card">
-            <h3>Following</h3>
-            <p>${userInfo.following}</p>
+          <div class="card col">
+            <h4>Following</h4>
+            <h5>7</h5>
           </div>
         </div>
 
       </div>
     </body>
-  </html>`
-}
+  </html>

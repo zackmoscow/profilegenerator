@@ -29,15 +29,15 @@ function init() {
     try {
         const response = await axios(`https://api.github.com/users/${username}`);
         let userInfo = {
-            image: response1.data.avatar_url,
-            name: response1.data.name,
-            location: response1.data.location,
-            profile: response1.data.html_url,
-            blog: response1.data.blog,
-            bio: response1.data.bio,
-            public_repos: response1.data.public_repos,
-            followers: response1.data.followers,
-            following: response1.data.following,
+            image: response.data.avatar_url,
+            name: response.data.name,
+            location: response.data.location,
+            profile: response.data.html_url,
+            blog: response.data.blog,
+            bio: response.data.bio,
+            publicrepos: response.data.public_repos,
+            followers: response.data.followers,
+            following: response.data.following,
         }
         
         let userStars = await axios(`https://api.github.com/users/${username}/starred`);

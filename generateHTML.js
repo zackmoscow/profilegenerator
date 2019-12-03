@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 const colors = {
   green: {
     wrapperBackground: "#E6E1C3",
@@ -25,7 +27,7 @@ const colors = {
   }
 };
 
-function generateHTML(data) {
+function generateHTML(colorTheme, userInfo, stars) {
   return `<!DOCTYPE html>
 <html lang="en">
    <head>
@@ -52,7 +54,7 @@ function generateHTML(data) {
          height: 100%;
          }
          .wrapper {
-         background-color: ${colors[data.color].wrapperBackground};
+         background-color: ${colors[colorTheme].wrapperBackground};
          padding-top: 100px;
          }
          body {
@@ -94,8 +96,8 @@ function generateHTML(data) {
          display: flex;
          justify-content: center;
          flex-wrap: wrap;
-         background-color: ${colors[data.color].headerBackground};
-         color: ${colors[data.color].headerColor};
+         background-color: ${colors[colorTheme].headerBackground};
+         color: ${colors[colorTheme].headerColor};
          padding: 10px;
          width: 95%;
          border-radius: 6px;
@@ -106,7 +108,7 @@ function generateHTML(data) {
          border-radius: 50%;
          object-fit: cover;
          margin-top: -75px;
-         border: 6px solid ${colors[data.color].photoBorderColor};
+         border: 6px solid ${colors[colorTheme].photoBorderColor};
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
          }
          .photo-header h1, .photo-header h2 {
@@ -149,8 +151,8 @@ function generateHTML(data) {
          .card {
            padding: 20px;
            border-radius: 6px;
-           background-color: ${colors[data.color].headerBackground};
-           color: ${colors[data.color].headerColor};
+           background-color: ${colors[colorTheme].headerBackground};
+           color: ${colors[colorTheme].headerColor};
            margin: 20px;
          }
          
@@ -170,5 +172,55 @@ function generateHTML(data) {
             zoom: .75; 
           } 
          }
-      </style>`
-        }
+      </style>
+    </head>
+    <body>
+      
+      <div class="row wrapper">
+        <div class="photo header">
+          <img src="${userInfo.image}" alt="avatar">
+          <h1>Hi! I'm ${userInfo.name}!</h1>
+          <p class="links-nav">
+            <a href="https://www.google.com/maps/place/${userInfo.location}" class="nav-link"><i class="fas fa-map-marker"></i>${userInfo.location}</a>
+            <a href="${userInfo.profile}"class="nav-link"><i class="fab fa-github-square"></i>GitHub</a>
+            <a href="${userInfo.blog}" class="nav-link"><i class="fas fa-rss-square"></i> Blog</a>
+          </p>        
+        </div>
+      </div>
+
+      <div class="container">
+        
+        <div class="row" id="#bio">
+            <h2>${userInfo.bio}</h2>
+        </div>
+
+        <div class="row">
+          <div class="card">
+            <h3>Public Repositories</h3>
+            <p>${userInfo.publicrepos}</p>
+          </div>
+          <div class="card">
+            <h3>Followers</h3>
+            <p>${userInfo.followers}</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="card">
+            <h3>GitHub Stars</h3>
+            <p>${stars}</p>
+          </div>
+          <div class="card">
+            <h3>Following</h3>
+            <p>${userInfo.following}</p>
+          </div>
+        </div>
+
+      </div>
+    </body>
+  </html>`
+}
+
+module.exports = {
+  generateHTML
+}
